@@ -52,12 +52,52 @@
 //show().hide().slideUp().slideDown()の4つを使えるようになるとさまざまなスタイルに応用できる。
 
 //確認問題
+//$(function(){
+//  $('.box1').slideDown(function(){
+//    $('.box1').css({
+//      'background-color':'#0000FF',
+//      'height':'100px',
+//      'width':'200px'
+//    }).slideUp();
+//  });
+//});
+
+//カリキュラム6
+//ボックスにマウスを持って行ったとき、ボックスの色を青に変える。
+//$(function(){
+//  $('.box1').mouseover(function(){
+//    $('.box1').css({'background-color': '#0000FF'});
+//  });
+//  $('.box1').mouseout(function(){
+//    $('.box1').css({'background-color': '#FF0000'});
+//  });
+//});
+//上記の記述だと、全てのCSSをいちいち書く必要があり、手間。
+//そこで、マウスオーバー時のCSSをあらかじめCSSに定義しておき、マウスカーソルの状況に合わせてCSSを追加削除するように設定しておく。
+
+//マウスがボックスに被った時に、cssのbox1-extを追加し、離れるときは解除する記述。これなら他でもCSSを使いまわせる。
+//$(function(){
+//  $('.box1').mouseover(function(){
+//    $('.box1').addClass('box1-ext');
+//  });
+//  $('.box1').mouseout(function(){
+//    $('.box1').removeClass('box1-ext');
+//  });
+//});
+
+// マウスクリックイベントを設定する。
+//.click()もあるが、clickの場合は、クリックされた時点でイベントが終わってしまう。
+//クリック後に複数のイベントが行われるようにしたいときは、下記の記述。
+//$('.セレクタ名').on('click', function(){
+//  イベント発生時に行われる処理
+//});
+
+//実際のマウスクリックイベントの記述
 $(function(){
-  $('.box1').slideDown(function(){
-    $('.box1').css({
-      'background-color':'#0000FF',
-      'height':'100px',
-      'width':'200px'
-    }).slideUp();
+  $('.box1').on('click', function(){
+    $('.box1').addClass('box1-ext');
+  });
+  $('.box1').mouseout(function(){
+    $('.box1').removeClass('box1-ext');
   });
 });
