@@ -93,11 +93,49 @@
 //});
 
 //実際のマウスクリックイベントの記述
+//$(function(){
+//  $('.box1').on('click', function(){
+//    $('.box1').addClass('box1-ext');
+//  });
+//  $('.box1').mouseout(function(){
+//    $('.box1').removeClass('box1-ext');
+//  });
+//});
+
+//カリキュラム7
+//４つのボックスをクリックすると、それぞれ上にスライドしていく。
+//$(function(){
+//  $('.bg1').on('click', function(){;
+//    $('.bg1').slideUp();
+//  });
+
+//  $('.bg2').on('click', function(){
+//    $('.bg2').slideUp();
+//  });
+
+//  $('.bg3').on('click', function(){
+//    $('.bg3').slideUp();
+//  });
+
+//  $('.bg4').on('click', function(){
+//    $('.bg4').slideUp();
+//  });
+//});
+//この記述だと、４つのBox全てにイベントを記述する必要があり面倒。
+
+//thisを使うことで以下のようにシンプルにまとめられる。
+//thisはイベントが発生した要素のみ変化させたい時に使う。
+//$(function(){
+//  $('.box1').on('click', function(){
+//    $(this).slideUp();
+//  });
+//});
+
+//children
+//childrenとは、HTML要素直下の全ての子要素を取得する時に使う。
+//クリックボタンを押した時に、ul要素の中身を赤色に変更する記述。
 $(function(){
-  $('.box1').on('click', function(){
-    $('.box1').addClass('box1-ext');
-  });
-  $('.box1').mouseout(function(){
-    $('.box1').removeClass('box1-ext');
+  $('button').on('click', function(){
+    $('ul').children().css({'color':'red'});
   });
 });
